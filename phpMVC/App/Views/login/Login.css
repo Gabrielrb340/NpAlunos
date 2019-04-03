@@ -1,0 +1,70 @@
+.vertical-center {
+	min-height: 100%;  /* Fallback for browsers do NOT support vh unit */
+	min-height: 100vh; /* These two lines are counted as one :-)       */
+
+	display: flex;
+	align-items: center;
+}
+.centerx1 {
+	margin: auto;
+	width: 50%;
+
+	padding: 10px;
+	border-collapse: separate;
+  border-spacing: 15px 50px;
+}
+
+		.body{
+			background: #DCDCDC
+		}
+		.background{
+			left: px;
+			top: 0px;
+			overflow: hidden;
+			margin: 0px;
+			padding: 0px;
+			height: 100vh;
+			width: 100vh;
+			z-index: -999999;
+			position: fixed;
+		}
+		.absolutebackground{
+			position: absolute;
+			 margin: 0px;
+			  padding: 0px;
+			   border: none;
+				width: 100vh;
+				 height: 100vh;
+				  max-height: none;
+				   max-width: none;
+					z-index: -999999;
+					 left: 0px;
+					  top: -119px;
+		}
+		#bg{
+			background: no-repeat center center fixed;
+			-moz-background-size:cover;
+        	-webkit-background-size:cover;
+        	-o-background-size:cover;
+        	background-size:cover;
+		}
+
+		html,body{
+			background-image: url(http://localhost/phpMVC/public/assets/img/backgrounds/definitivebackground.jpg);
+			background-size: 100% 100%;
+			background-repeat: no-repeat;
+			/* height: 100px; */
+			/* max-width: 100%	; */
+			/* max-height: 80%; */
+			/* width: 1000px; */
+			font-family: 'Numans', sans-serif;
+			margin: 5; 
+			height: 100%; 
+			overflow:auto;
+			}
+			
+/* 
+		style="left: 0px; top: 0px; overflow: hidden; margin: 0px; padding: 0px; height: 608px; width: 846px; z-index: -999999; position: fixed;"><img src="assets/img/backgrounds/7.jpg" style="position: absolute; margin: 0px; padding: 0px; border: none; width: 846px; height: 846px; max-height: none; max-width: none; z-index: -999999; left: 0px; top: -119px;" */
+
+
+	
