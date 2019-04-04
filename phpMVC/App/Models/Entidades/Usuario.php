@@ -2,10 +2,11 @@
 
 namespace App\Models\Entidades;
 
-use App\Models\Repository\UsuarioRepository;
 use App\Lib\Sessao;
-use App\Models\Repository\UsuarioRepository\UsuarioRepository as AppUsuarioRepository;
+use App\Models\Repository\UsuarioRepository\UsuarioRepository;
+// use App\Models\Repository\UsuarioRepository\UsuarioRepository as AppUsuarioRepository;
 
+include APP_HOST."/App/Models/Repository/UsuarioRepository.php";
 
 
 class Usuario
@@ -14,6 +15,9 @@ class Usuario
     private $nome;
     private $senha;
     private $email;
+    private $celular;
+    private $cpf;
+    private $setor;
 
     public function getId()
     {
@@ -40,22 +44,64 @@ class Usuario
     {
         $this->email = $email;
     }
+    
 
-    /**
-     * Set the value of senha
-     *
-     * @return  self
-     */
+    public function getCelular()
+    {
+        return $this->celular;
+    }
+
+    public function setCelular($celular)
+    {
+        $this->celular = $celular;
+
+        return $this;
+    }
+ 
+    public function getSenha()
+    {
+        return $this->senha;
+    }
+  
+    public function getCpf()
+    {
+        return $this->cpf;
+    }
+
+    
+
+    public function setCpf($cpf)
+    {
+        $this->cpf = $cpf;
+
+        return $this;
+    }
+
+
+    public function getSetor()
+    {
+        return $this->setor;
+    }
+
+    public function setSetor($setor)
+    {
+        $this->setor = $setor;
+
+        return $this;
+    }
+
+///Metodos da classe
     public function setSenha($senha)
     {
         $this->senha = $senha;
 
         return $this;
     }
-    public function verificarEmail($email)
+    public function verificarEmaileCpf($email,$cpf)
     {
-        $repository = new AppUsuarioRepository();
-        $result = $repository->verificaEmail($email);
+        
+        $repository = new UsuarioRepository();
+        $result = $repository->verificaEmaileCpf($email,$cpf);
         if (sizeOf($result) > 0) {
             return true;
         } else {
@@ -67,7 +113,7 @@ class Usuario
 
         if (!is_null($Usuario->senha) && !is_null($Usuario->email)) {
 
-            $check = new AppUsuarioRepository();
+            $check = new UsuarioRepository();
             $resut = $check->checklogin($Usuario);
 
             if (sizeof($resut) > 1) {
@@ -79,4 +125,12 @@ class Usuario
             }
         }
     }
+    public function Cadastrar(Usuario $user){
+        $repository = new UsuarioRepository();
+        $repository->salvar($user);
+    }
+    
+
+
+  
 }
