@@ -42,6 +42,12 @@
                   <input type="email" class="form-control" name="email" id="email" placeholder="Email" value="<?php echo $Sessao::retornaValorFormulario('email');?>">
                </div>
                <div class="form-group col-md-12">
+              <input type="text" class="form-control" name="tel" id="tel" placeholder="CPF">
+              </div>
+              <div class="form-group col-md-12">
+              <input type="text" class="form-control" name="numCPF" id="CPf" placeholder="CPF">
+              </div>
+               <div class="form-group col-md-12">
                   <input type="password" class="form-control" name="senha" id="pass" placeholder="Senha">
                   <div id="messagem"></div>
                </div>
