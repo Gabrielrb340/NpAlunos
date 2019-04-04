@@ -67,6 +67,10 @@ echo APP_HOST?>/public/assets/bootstrap/css/bootstrap.min.css">
                                     <div class="form-group">
                                         <a href="<?php echo APP_HOST?>/App/Views/Alterarsenha/esquecisenha.php">"Esqueci minha senha</a>
                                     </div>
+                                    <div class="form-check">
+                                         <input type="checkbox" class="form-check-input" id="box01">
+                                        <label class="form-check-label" for="exampleCheck1">Lembrar senha</label>
+                                     </div>
                                     
                                     <button type="submit" class="btn">ENTRAR</button>
                                 

@@ -22,6 +22,13 @@ class LoginController extends Controller
         $Usuario->login($Usuario);
         
 
+        if(){
+        setcookie('email', $_POST['email'])
+        setcookie('senha', $_post['senha'])
+        }
+
+
+
         
 
 
