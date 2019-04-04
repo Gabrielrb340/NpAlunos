@@ -4,6 +4,8 @@
       <link href="<?php echo APP_HOST;?>/public/css/mainPublic.css" rel="stylesheet" type="text/css">
       <script src="<?php echo APP_HOST; ?>/public/js/jquery-3.2.1.min.js" type="text/javascript"></script>
       <script src="<?php echo APP_HOST; ?>/public/js/jquery.validate.min.js"type="text/javascript"></script>
+      <script type="text/javascript" src="<?php echo APP_HOST;?>/public/js/Mask-Plugin/dist/jquery-3.2.1.min.js"></script>
+      <script type="text/javascript" src="<?php echo APP_HOST;?>/public/js/Mask-Plugin/dist/jquery.mask.min.js"></script>
       <script src="<?php echo APP_HOST;?>/public/js/validacao.js" type="text/javascript"></script>
       <script type="text/javascript">
          $(document).ready(function(){
@@ -20,6 +22,11 @@
                      }
                });
          });
+         $(document).ready(function(){
+         $('#cpf').mask('000-000-000-00');
+         $('#tel').mask('(00)-00000-0000');
+
+         });
          	
       </script>
       <meta charset="UTF-8">
@@ -34,29 +41,48 @@
          <div class="card centerx1 border-primary ">
             <img src="<?php echo APP_HOST; ?>\public\Icons\imgcad.png" class="card-top" style="max-height: 300px; max-width: 300px;">
             <form action="<?php echo APP_HOST; ?>/cadastro/cadastrar" method="post" id="form_cadastro">
-               <div class="form-group col-md-12">
-                  <label for="inputEmail4">Nome</label>
-                  <input type="text" class="form-control"  name="nome" id="nome" placeholder="Nome de usuario" value="<?php echo $Sessao::retornaValorFormulario('nome');?>">
-               </div>
-               <div class="form-group col-md-12">
-                  <label for="inputPassword4">Email</label>
-                  <input type="email" class="form-control" name="email" id="email" placeholder="Email" value="<?php echo $Sessao::retornaValorFormulario('email');?>">
-               </div>
-               <div class="form-group col-md-12">
-                  <label for="inputEmail4">Senha</label>
-                  <input type="password" class="form-control" name="senha" id="pass" placeholder="Senha">
-                  <div id="messagem"></div>
-               </div>
-               <div class="form-group col-md-12">
-                  <label for="inputPassword4">Confirme sua senha</label>
-                  <input type="password" class="form-control" id="cpass" value="<?php echo $Sessao::retornaValorFormulario('senha');?>">
-                  <p><span class="emsg hidden">Senhas Divergentes</span></p>
-               </div>
-               <div class="form-group">
-               </div>
-               <div class="form-group col-md-12">
-                  <button type="submit" class="btn btn-primary">Cadastrar</button>
-               </div>
+            <div class="form-group col-md-12">
+            
+            <input type="text" class="form-control" id="nome" name="nome" placeholder="Nome de usuario">
+            </div>
+            <div class="form-group col-md-12">
+
+            <div class="form-group col-md-14">
+            <input type="text" class="form-control " name="cpf" id="cpf" placeholder="CPF">
+            </div>
+
+            <div class="form-group col-md-14">
+            <input type="text"class="form-control" id="tel" name="tel" placeholder="Celular" >
+            </div>
+            
+
+          <div class="form-group col-md-14">
+            <select class="form-control" id="setor" name="setor">
+              <option value="teste">teste</option>
+              <option value="fazer"> tabela setor</option>
+            </select>
+          </div>
+            
+            <input type="email" class="form-control" id="email" name="email" placeholder="Email">
+             </div>
+          <div class="form-group col-md-12">
+          
+            <input type="password" class="form-control" id="pass" name="pass" placeholder="Senha" required>
+          <div id="messagem"></div>
+
+          </div>
+          <div class="form-group col-md-12">
+          
+            <input type="password" class="form-control" id="cpass" name="cpass" placeholder="Digite sua senha novamente" required>
+          <p><span class="emsg hidden">Senhas Divergentes</span></p>
+
+          </div>
+          <div class="form-group">
+          
+        </div>
+        <div class="form-group col-md-12">
+        <button type="submit" class="btn btn-primary">Cadastrar</button>
+        </div>
             </form>
          </div>
       </div>

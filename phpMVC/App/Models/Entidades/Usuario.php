@@ -3,8 +3,8 @@
 namespace App\Models\Entidades;
 
 use App\Models\Repository\UsuarioRepository;
-use App\Models\Repository\UsuarioRepository\UsuarioRepository as AppUsuarioRepository;
 use App\Lib\Sessao;
+use App\Models\Repository\UsuarioRepository\UsuarioRepository as AppUsuarioRepository;
 
 
 

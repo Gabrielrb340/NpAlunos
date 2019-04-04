@@ -1,10 +1,9 @@
 <?php
 
-namespace App\Models\Repository\UsuarioRepository;
 
 use App\Models\Entidades\Usuario;
 use App\Models\Repository\RepositoryBase;
-
+namespace App\Models\Repository\UsuarioRepository{
 class UsuarioRepository extends RepositoryBase
 {
     public function verificaEmail($email)
@@ -63,5 +62,5 @@ class UsuarioRepository extends RepositoryBase
        }
 
     }
-
+}
 }
