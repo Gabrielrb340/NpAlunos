@@ -63,8 +63,8 @@
 
                <div class="form-group col-md-14">
                   <select class="form-control" id="setor" name="setor">
-                     <option value="1">teste</option>
-                     <option value="2">tabela setor</option>
+                     <option value="0">teste</option>
+                     <option value="1">tabela setor</option>
                   </select>
                </div>
 
