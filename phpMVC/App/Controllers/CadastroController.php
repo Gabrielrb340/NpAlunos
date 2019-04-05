@@ -20,7 +20,7 @@ class CadastroController extends Controller
         $Usuario->setEmail($_POST['email']);
         $Usuario->setSenha(md5($_POST['senha']));
         $Usuario->setTel($_POST['tel']);
-        $Usuario->setCPF($_POST['numCPF']);
+        $Usuario->setCPF($_POST['cpf']);
         $Usuario->setSetor($_POST['setor']);
         //echo $Usuario->toString();
 

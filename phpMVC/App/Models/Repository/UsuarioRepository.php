@@ -72,11 +72,16 @@ class UsuarioRepository extends RepositoryBase
            $stm->execute(['SENHA'=>$usuario->senha]); 
            return $stm->fetch();*/
           $con = $this->getConexao();
-          $sql = "select nom_professor from professor where des_email = ? and des_senha = ?";
-          $stm = $con->prepare($sql);
-          $stm->bindValue(1,$usuario->getEmail());
-          $stm->bindValue(2,md5($usuario->getSenha()));
-          $stm->execute();
+        //   $senha = md5($usuario->getSenha());
+          $sql = "select nom_professor from professor where des_email='".$usuario->getEmail()."' and des_senha='".$usuario->getSenha()."'";
+          $stm = $con->query($sql);
+        //   $stm->bindValue(1,$usuario->getEmail());
+        // $stm->bindValue(2,md5($usuario->getSenha()));
+        //  $stm->execute(['email'=>$usuario->getEmail(),'senha'=>md5($usuario->getSenha())]);
+        //  $stm->execute([md5($usuario->getSenha())]);
+
+
+        //   $stm->execute();
           return $stm->fetch();
           
        } catch (\Throwable $th) {

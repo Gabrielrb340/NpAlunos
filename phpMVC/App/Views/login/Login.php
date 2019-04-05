@@ -54,7 +54,7 @@ echo APP_HOST?>/public/assets/bootstrap/css/bootstrap.min.css">
                             </div>
                            
                             <div class="form-bottom">
-			                    <form action="http://<?php echo APP_HOST; ?>/login/login" method="post" id="form_login">
+			                    <form action="<?php echo APP_HOST; ?>/login/login" method="post" id="form_login">
 			                    	<div class="form-group sm3">
                                         <label class="sr-only" for="form-username">Usuário</label>
                                         <!--Validacao foi feita com email, -->
@@ -65,7 +65,7 @@ echo APP_HOST?>/public/assets/bootstrap/css/bootstrap.min.css">
 			                        	<input type="password" id="senha" name="senha" placeholder="Senha..." class="form-password form-control" id="form-password">
                                     </div>
                                     <div class="form-group">
-                                        <a href="<?php echo APP_HOST?>/App/Views/Alterarsenha/esquecisenha.php">"Esqueci minha senha</a>
+                                        <a href="<?php echo APP_HOST?>/App/Views/Alterarsenha/esquecisenha.php">Esqueci minha senha</a>
                                     </div>
                                     <div class="form-check">
                                          <input type="checkbox" class="form-check-input" id="box01">

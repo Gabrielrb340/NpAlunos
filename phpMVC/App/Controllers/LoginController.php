@@ -15,7 +15,7 @@ class LoginController extends Controller
     public function login(){
         $Usuario = new Usuario();
         $Usuario->setEmail($_POST['email']);
-        $Usuario->setSenha($_POST['senha']);
+        $Usuario->setSenha(md5($_POST['senha']));
 
         Sessao::gravaFormulario($_POST);
         $Usuario->login($Usuario);
@@ -32,14 +32,29 @@ class LoginController extends Controller
 
 
         if($Usuario->login($Usuario)){
-            $this->redirect('/home/index');
+            $this->redirect('/Home/Home');
         }else{
             Sessao::gravaMensagem("Erro ao gravar");
-            $this->render('login/Login');
+            $this->index();
         }
 
     }
+    public function logar(){
+        $Usuario = new Usuario();
+        $Usuario->setEmail($_POST['email']);
+        $Usuario->setSenha($_POST['senha']);
 
+        Sessao::gravaFormulario($_POST);
+        $Usuario->login($Usuario);
+
+        if($Usuario->login($Usuario)){
+            $this->redirect('/Home/Home');
+        }else{
+            Sessao::gravaMensagem("Erro ao gravar");
+            $this->index();
+        }
+
+    }
 
 
 
