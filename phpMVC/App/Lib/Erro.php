@@ -11,6 +11,7 @@ class Erro
 
     public function __construct($objetoException = Exception::class)
     {
+        echo $objetoException->getMessage();
         $this->code     = $objetoException->getCode();
         $this->message  = $objetoException->getMessage();
     }

@@ -16,7 +16,7 @@ echo APP_HOST?>/public/assets/bootstrap/css/bootstrap.min.css">
         <link rel="stylesheet" href="<?php echo APP_HOST?>/public/assets/font-awesome/css/font-awesome.min.css">
 		<link rel="stylesheet" href="<?php echo APP_HOST?>/public/assets/css/form-elements.css">
         <link rel="stylesheet" href="<?php echo APP_HOST?>/public/assets/css/style.css">
-        <link rel="stylesheet" href="<?php echo APP_HOST?>/App/Views/login/Login.css">
+        <link rel="stylesheet" href="<?php echo APP_HOST?>/App/Views/home/home.css">
 
 
         <!-- Paradinha identificar -->
@@ -34,43 +34,34 @@ echo APP_HOST?>/public/assets/bootstrap/css/bootstrap.min.css">
             <div class="inner-bg">
                 <div class="container">
                     <div class="row">
-                        <div class="col-sm-8 col-sm-offset-2 text">
-                            
-                            <div class="description">
-                            	<p>
-
-                            	</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-6 col-sm-offset-3 form-box">
+                        <div class="col-sm-10 col-sm-offset-1">
                         	<div class="form-top">
- 
-                                <div class="form-top-left">
+                                 <div class="form-top-left">
                                     <img src="<?php echo APP_HOST?>/public/assets/img/backgrounds/8.png" class="form-top" style="padding-left: 195px;">
-              
-                                </div>
+                                 </div>
+                                 <div>
+                                    <table id="homeTable" style="width:90%; margin:5%">
+                                      <tr>
+                                        <th>Nome</th>
+                                        <th>Setor</th> 
+                                        <th>Telefone</th>
+                                        <th>CPF</th>
+                                      </tr>
+                                      <tr>
+                                        <td>Jill</td>
+                                        <td>Smith</td> 
+                                        <td>50</td>
+                                        <td>50</td>
+                                      </tr>
+                                      <tr>
+                                        <td>Eve</td>
+                                        <td>Jackson</td> 
+                                        <td>94</td>
+                                        <td>50</td>
+                                      </tr>
+                                    </table>
+                                 </div>
                             </div>
-                           
-                            <div class="form-bottom">
-			                    <form action="<?php echo APP_HOST;?>/login/login" method="post" id="form_login">
-			                    	<div class="form-group">
-                                        <label class="sr-only" for="form-username">Email</label>
-                                        <!--Validacao foi feita com email, -->
-			                        	<input type="email" id="nome" name="email" placeholder="Email..." value= "<?php Sessao::retornaValorFormulario('email') ?>" class="form-username form-control" id="form-username">
-			                        </div>
-			                        <div class="form-group">
-			                        	<label class="sr-only" for="form-password">Senha</label>
-			                        	<input type="password" id="senha" name="senha" placeholder="Senha..." class="form-password form-control" id="form-password">
-			                        </div>
-                                    <button type="submit" class="btn">ENTRAR</button>
-                                
-                                    <div class="col-6" style="padding-left: 195px">
-                                        <input class="btn btn-light" name="Criar conta" type="button" onClick="window.open('<?php echo APP_HOST;?>/cadastro/index')" value="Criar conta">
-
-			                    </form>
-		                    </div>
                         </div>
                     </div>
                     <div class="row"></div>

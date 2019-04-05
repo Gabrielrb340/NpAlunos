@@ -1,69 +1,88 @@
 <?php
-namespace App\Models\Repository\UsuarioRepository;
-    use App\Models\Entidades\Usuario;
-// use App\Repository\RepositoryBase;
-use App\Lib\Conexao;
-use App\Lib\Sessao;
-class UsuarioRepository
+
+namespace App\Models\Repository;
+
+use App\Models\Entidades\Usuario;
+use App\Models\Repository;
+
+class UsuarioRepository extends RepositoryBase
 {
-        private $conexao;
-
-    public function __construct()
-    {
-            $this->conexao = Conexao::getConnection();
-
-    }
-    public function verificaEmaileCpf($email, $cpf)
+    public function verificaEmail($email)
     {
         try {
-            // $conect = $this->getConexao();
-            $cpfreplace= str_replace('-','',$cpf);
-            $stmt= $this->conexao->prepare("select * from professor where des_email 
-            = '$email' or num_cpf= '$cpfreplace' " );
-            // $stmt->bindValue(':email', $email, $this->conexao::PARAM_STR);
-            $stmt->execute();
-            $resultadoteste= $stmt->fetchall();
-            return $resultadoteste;
+            $conect = $this->getConexao();
+            $stmt=$conect->query("select * from professor where email=:email");
+            $stmt->execute(['email'=>$email]);
+        
+            return $stmt->fetch();
+
         }catch (Exception $e){
             throw new \Exception("Erro no acesso aos dados.", 500);
         }
     }
 
     public  function salvar(Usuario $usuario) {
+        // try {
+        //     $nome      = $usuario->getNome();
+        //     $email     = $usuario->getEmail();
+        //     return $this->insert(
+        //         'usuario',
+        //         ":nome,:email",
+        //         [
+        //             ':nome'=>$nome,
+        //             ':email'=>$email
+        //         ]
+        //     );
+
+        // }catch (\Exception $e){
+        //     throw new \Exception("Erro na gravação de dados.", 500);
+        // }
+      //TODO Melhorar função
         try {
-            $sql = "insert into professor (nom_professor, num_telefone,num_cpf,des_senha,idsetor,des_email) values (?,?,?,?,?,?)";
-            $stm = $this->conexao->prepare($sql);
-            $cpfreplace= str_replace('-','',$usuario->getCpf());
-
+          $con = $this->getConexao();
+            $sql = "insert into professor 
+            (nom_professor,des_senha,des_email,num_cpf,num_telefone,id_setor) 
+            values (?,?,?,?,?,?)";
+            $stm = $con->prepare($sql);
             $stm->bindValue(1,$usuario->getNome());
-            $stm->bindValue(2,$usuario->getCelular());
-            $stm->bindValue(3,$cpfreplace);
-            $stm->bindValue(4,$usuario->getSenha());
-            $stm->bindValue(5,$usuario->getSetor());
-            $stm->bindValue(6,$usuario->getEmail());
-
+            $stm->bindValue(2,$usuario->getSenha());
+            $stm->bindValue(3,$usuario->getEmail());
+            $stm->bindValue(4,$usuario->getCPF());
+            $stm->bindValue(5,$usuario->getTel());
+            //TODO Setor é primary key da tabela SETOR
+            $stm->bindValue(6,$usuario->getSetor());
             $stm->execute();
-            Sessao::gravaMensagem('Usuario Salvo Com sucesso!');
-        } catch (PDOException $e) {
-            throw new Exception("Erro no banco", $e);
-            Sessao::gravaMensagem("Houve um erro inesperado tente novamente!");
-            
+            return true;
+        } catch (\Throwable $th) {
+             throw $th;
         }
       
     }
-
+    /*for($i=0; $row = $query->fetch(); $i++){
+        echo $i." - ".$row['name']."<br/>";*/
     public function checklogin(Usuario $usuario){
        try {
-           $query = ("SELECT EMAIL, SENHA, ATIVO FROM PROFESSOR WHERE ATIVO = 1 AND EMAIL=:$email AND SENHA=:$senha");
+           //TODO WHERE ATIVO = 1
+
+           /*$query = ("SELECT EMAIL, SENHA, ATIVO FROM PROFESSOR WHERE ATIVO = 1 AND EMAIL=:$email AND SENHA=:$senha");
            
-           $stm = $this->conexao->$query($query);
+           $connect = $this->getConexao();
+           $stm = $connect->$query($query);
            $stm->execute(['EMAIL'=>$usuario->email]); 
            $stm->execute(['SENHA'=>$usuario->senha]); 
-           return $stm->fetch();
-        
+           return $stm->fetch();*/
+          $con = $this->getConexao();
+          $sql = "select nom_professor from professor where des_email = ? and des_senha = ?";
+          $stm = $con->prepare($sql);
+          $stm->bindValue(1,$usuario->getEmail());
+          $stm->bindValue(2,md5($usuario->getSenha()));
+          $stm->execute();
+          return $stm->fetch();
+          
        } catch (\Throwable $th) {
-           //throw $th;
+           throw $th;
        }
 
     }
+
 }
