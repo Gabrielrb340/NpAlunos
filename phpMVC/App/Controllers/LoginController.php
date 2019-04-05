@@ -13,7 +13,6 @@ class LoginController extends Controller
         $this->render('login/Login');
     }
     public function login(){
-        
         $Usuario = new Usuario();
         $Usuario->setEmail($_POST['email']);
         $Usuario->setSenha($_POST['senha']);
@@ -22,16 +21,22 @@ class LoginController extends Controller
         $Usuario->login($Usuario);
         
 
-        if(){
-        setcookie('email', $_POST['email'])
-        setcookie('senha', $_post['senha'])
-        }
+       
+       // setcookie('email', $_POST['email'])
+        //setcookie('senha', $_post['senha'])
+        
 
 
 
         
 
 
+        if($Usuario->login($Usuario)){
+            $this->redirect('/home/index');
+        }else{
+            Sessao::gravaMensagem("Erro ao gravar");
+            $this->render('login/Login');
+        }
 
     }
 

@@ -28,7 +28,7 @@ class App
         define('PROTOCOLO', stripos($_SERVER['SERVER_PROTOCOL'],'https') === true ? 'https://' : 'http://');
         define('APP_HOST'       , PROTOCOLO.$_SERVER['HTTP_HOST'] . "/phpMVC");
         define('PATH'           , realpath('./'));
-        define('TITLE'          , "teste");
+        define('TITLE'          , "NPAluno");
         define('DB_HOST'        , "localhost");
         define('DB_USER'        , "root");
         define('DB_PASSWORD'    , "");

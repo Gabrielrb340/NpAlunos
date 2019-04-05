@@ -18,24 +18,24 @@ class CadastroController extends Controller
         $Usuario = new Usuario();
         $Usuario->setNome($_POST['nome']);
         $Usuario->setEmail($_POST['email']);
-        $Usuario->setSenha(md5($_POST['pass']));
-        $Usuario->setCpf($_POST['cpf']);
-        $Usuario->setCelular($_POST['tel']);
+        $Usuario->setSenha(md5($_POST['senha']));
+        $Usuario->setTel($_POST['tel']);
+        $Usuario->setCPF($_POST['numCPF']);
         $Usuario->setSetor($_POST['setor']);
-
+        //echo $Usuario->toString();
 
         Sessao::gravaFormulario($_POST);
 
-        $valido=$Usuario->verificarEmaileCpf($_POST['email'],$_POST['cpf']);
+        //TODO essa verificação precisa mesmo existir!? 
+        //if($Usuario->verificarEmail($_POST['email'])){
+        //    Sessao::gravaMensagem("Email existente");
+        //    $this->redirect('usuario/cadastro');
+        //}
 
-        if($valido){
-            Sessao::gravaMensagem("Email existente ou CPF ja existente");
-            $this->index();
-            Sessao::gravaFormulario($_POST);
-
-        }else {
-            if($Usuario->Cadastrar($Usuario)&&$valido){
-            }
+        if($Usuario->salvar()){
+           $this->redirect('/login/Login');
+        }else{
+            Sessao::gravaMensagem("Erro ao gravar");
         }
     }
 ///teste

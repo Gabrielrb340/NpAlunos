@@ -58,7 +58,7 @@ echo APP_HOST?>/public/assets/bootstrap/css/bootstrap.min.css">
 			                    	<div class="form-group sm3">
                                         <label class="sr-only" for="form-username">Usuário</label>
                                         <!--Validacao foi feita com email, -->
-			                        	<input type="email" id="nome" name="nome" placeholder="Usuário..." value= "<?php Sessao::retornaValorFormulario('email') ?>" class="form-username form-control" id="form-username">
+			                        	<input type="email" id="nome" name="email" placeholder="Email..." value= "<?php Sessao::retornaValorFormulario('email') ?>" class="form-username form-control" id="form-username">
 			                        </div>
 			                        <div class="form-group">
 			                        	<label class="sr-only" for="form-password">Senha</label>

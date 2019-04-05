@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title><?php echo TITLE; ?> 401</title>
+    <title><?php echo TITLE; ?> | Erro 401</title>
     <link href="http://<?php echo APP_HOST; ?>/public/css/bootstrap.min.css" rel="stylesheet">
     <link href="http://<?php echo APP_HOST; ?>/public/css/error.css" rel="stylesheet">
 </head>
