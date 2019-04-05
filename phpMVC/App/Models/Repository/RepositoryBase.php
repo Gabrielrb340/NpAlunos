@@ -1,46 +1,49 @@
-<!-- classe ta bugada sa merda
-// namespace App\Repository;
-// use App\Lib\Conexao;
-// abstract class RepositoryBase
-// {
-//     private $conexao;
+<?php
 
-//     public function __construct()
-//     {
-//         $this->conexao = Conexao::getConnection();
-//     }
+namespace App\Models\Repository;
 
-//     public function select($sql) 
-//     {
-//         if(!empty($sql))
-//         {
-//             return $this->conexao->query($sql);
-//         }
-//     }
+use App\Lib\Conexao;
 
-//     public function insert($table, $cols, $values) 
-//     {
-//         if(!empty($table) && !empty($cols) && !empty($values))
-//         {
-//             $parametros    = $cols;
-//             $colunas       = str_replace(":", "", $cols);
-//             /*
-//                 INSERT INTO usuario (nome,email) VALUES (:nome,:email);
-//             */
-//             $stmt = $this->conexao->prepare("INSERT INTO $table ($colunas) VALUES ($parametros)");
-//             $stmt->execute($values);
+abstract class RepositoryBase
+{
+    private $conexao;
 
-//             return $stmt->rowCount();
-//         }else{
-//             return false;
-//         }
-//     }
+    public function __construct()
+    {
+        $this->conexao = Conexao::getConnection();
+    }
 
-//     /**
-//      * Get the value of conexao
-//      */ 
-//     public function getConexao()
-//     {
-//         return $this->conexao;
-//     }
+    public function select($sql) 
+    {
+        if(!empty($sql))
+        {
+            return $this->conexao->query($sql);
+        }
+    }
 
+    public function insert($table, $cols, $values) 
+    {
+        if(!empty($table) && !empty($cols) && !empty($values))
+        {
+            $parametros    = $cols;
+            $colunas       = str_replace(":", "", $cols);
+            /*
+                INSERT INTO usuario (nome,email) VALUES (:nome,:email);
+            */
+            $stmt = $this->conexao->prepare("INSERT INTO $table ($colunas) VALUES ($parametros)");
+            $stmt->execute($values);
+
+            return $stmt->rowCount();
+        }else{
+            return false;
+        }
+    }
+
+    /**
+     * Get the value of conexao
+     */ 
+    public function getConexao()
+    {
+        return $this->conexao;
+    }
+}

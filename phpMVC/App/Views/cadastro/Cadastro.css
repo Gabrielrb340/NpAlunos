@@ -13,7 +13,20 @@
 	border-collapse: separate;
   border-spacing: 15px 50px;
 }
-
-		body{
+.body{
 			background: #DCDCDC
 		}
+
+		html,body{
+			background-image: url(http://localhost/phpMVC/public/assets/img/backgrounds/definitivebackground.jpg);
+			background-size: 100% 100%;
+			background-repeat: no-repeat;
+			/* height: 100px; */
+			/* max-width: 100%	; */
+			/* max-height: 80%; */
+			/* width: 1000px; */
+			font-family: 'Numans', sans-serif;
+			margin: 5; 
+			height: 100%; 
+			overflow:auto;
+			}s

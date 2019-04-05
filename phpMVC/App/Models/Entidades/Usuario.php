@@ -2,11 +2,9 @@
 
 namespace App\Models\Entidades;
 
+use App\Models\Repository\UsuarioRepository as AppUsuarioRepository;
 use App\Lib\Sessao;
-use App\Models\Repository\UsuarioRepository\UsuarioRepository;
-// use App\Models\Repository\UsuarioRepository\UsuarioRepository as AppUsuarioRepository;
 
-include APP_HOST."/App/Models/Repository/UsuarioRepository.php";
 
 
 class Usuario
@@ -15,9 +13,10 @@ class Usuario
     private $nome;
     private $senha;
     private $email;
-    private $celular;
     private $cpf;
     private $setor;
+    private $tel;
+
 
     public function getId()
     {
@@ -40,43 +39,25 @@ class Usuario
         return $this->email;
     }
 
-    public function setEmail($email)
-    {
-        $this->email = $email;
-    }
-    
-
-    public function getCelular()
-    {
-        return $this->celular;
-    }
-
-    public function setCelular($celular)
-    {
-        $this->celular = $celular;
-
-        return $this;
-    }
- 
     public function getSenha()
     {
         return $this->senha;
     }
-  
-    public function getCpf()
+
+    public function setEmail($email)
     {
-        return $this->cpf;
+        $this->email = $email;
     }
 
-    
-
-    public function setCpf($cpf)
+    public function getTel()
     {
-        $this->cpf = $cpf;
-
-        return $this;
+        return $this->tel;
     }
 
+    public function setTel($tel)
+    {
+        $this->tel = $tel;
+    }
 
     public function getSetor()
     {
@@ -86,22 +67,35 @@ class Usuario
     public function setSetor($setor)
     {
         $this->setor = $setor;
-
-        return $this;
+    }
+    public function getCPF()
+    {
+        return $this->cpf;
     }
 
-///Metodos da classe
+    public function setCPF($cpf)
+    {
+        $this->cpf = $cpf;
+    }
+
+    public function toString(){
+        return $nome."\n ".$senha."\n ".$setor."\n ".$tel."\n ".$cpf."\n ".$email;
+    }
+    /**
+     * Set the value of senha
+     *
+     * @return  self
+     */
     public function setSenha($senha)
     {
         $this->senha = $senha;
 
         return $this;
     }
-    public function verificarEmaileCpf($email,$cpf)
+    public function verificarEmail($email)
     {
-        
-        $repository = new UsuarioRepository();
-        $result = $repository->verificaEmaileCpf($email,$cpf);
+        $repository = new AppUsuarioRepository();
+        $result = $repository->verificaEmail($email);
         if (sizeOf($result) > 0) {
             return true;
         } else {
@@ -109,28 +103,24 @@ class Usuario
         }
     }
     public function login(Usuario $Usuario)
-    {
-
+    {   
         if (!is_null($Usuario->senha) && !is_null($Usuario->email)) {
+            $check = new AppUsuarioRepository();
+            $result = $check->checklogin($Usuario);
 
-            $check = new UsuarioRepository();
-            $resut = $check->checklogin($Usuario);
-
-            if (sizeof($resut) > 1) {
+            if ($result) {
                 Sessao::retornaMensagem("Login efetuado com sucesso");
-
+                return true;
             }
             else{
                 Sessao::retornaMensagem("Senha ou usuário inválido");
+                return false;
             }
         }
     }
-    public function Cadastrar(Usuario $user){
-        $repository = new UsuarioRepository();
-        $repository->salvar($user);
+
+    public function salvar(){
+        $repository = new AppUsuarioRepository();
+        return $repository->salvar($this);
     }
-    
-
-
-  
 }

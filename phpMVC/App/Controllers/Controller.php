@@ -27,7 +27,8 @@ abstract class Controller
 
     public function redirect($view)
     {
-        header('Location: http://' . APP_HOST . $view);
+        //ATENCAO que se for alterar isso aqui em baixo irá impactar em todos redirects
+        header('Location: ' . APP_HOST . $view);
         exit;
     }
 
