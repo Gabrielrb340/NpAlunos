@@ -63,7 +63,9 @@ class Email
         $result = $mailer->send($message);
     }
     public function EnviarEsqueciMinhaSenha(){
-
+            //verificaremail
+            //caso houver no banco enviar link para resetar senha
+            //caso contrario retornar mensagem
         
     }
 }

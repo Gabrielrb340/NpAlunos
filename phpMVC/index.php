@@ -1,5 +1,6 @@
 <?php
 require_once("vendor/autoload.php");
+require_once ('vendor/swiftmailer/swiftmailer/lib/swift_required.php');
 
 use App\App;
 use App\Lib\Erro;
