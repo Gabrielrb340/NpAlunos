@@ -26,6 +26,8 @@
              $("#CPF").mask("999.999.999-99");
              $("#tel").mask("(99) 9999-9999");
          });
+
+       
           
       </script>
       <meta charset="UTF-8">
@@ -48,15 +50,6 @@
                   <label for="">Email</label>
                   <input type="email" class="form-control" name="email" id="email" placeholder="Email" value="<?php echo $Sessao::retornaValorFormulario('email');?>">
                </div>
-<<<<<<< HEAD
-
-
-               <div class="form-group col-md-14">
-                  <select class="form-control" id="setor" name="setor">
-                     <option value="0">teste</option>
-                     <option value="1">tabela setor</option>
-                  </select>
-=======
                <div class="form-group col-md-12">
                  <label for="inputPassword4">Setor</label>
                 <select class="form-control" name="setor" id="setor">
@@ -76,7 +69,6 @@
                   <label for="inputEmail4">Senha</label>
                   <input type="password" class="form-control" name="senha" id="pass" placeholder="Senha">
                   <div id="messagem"></div>
->>>>>>> be9309a91d89d714df501257556a3a483b4ebca5
                </div>
                <div class="form-group col-md-12">
                   <label for="inputPassword4">Confirme sua senha</label>

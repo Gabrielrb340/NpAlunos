@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+
 <html lang="en">
 
     <head>
@@ -25,6 +25,9 @@ echo APP_HOST?>/public/assets/bootstrap/css/bootstrap.min.css">
         <link rel="apple-touch-icon-precomposed" sizes="72x72" href="<?php echo APP_HOST?>/public/assets/ico/apple-touch-icon-72-precomposed.png">
         <link rel="apple-touch-icon-precomposed" href="<?php echo APP_HOST?>/public/assets/ico/apple-touch-icon-57-precomposed.png">
          
+   
+
+
     </head>
 
     <body>
@@ -54,25 +57,25 @@ echo APP_HOST?>/public/assets/bootstrap/css/bootstrap.min.css">
                             </div>
                            
                             <div class="form-bottom">
-			                    <form action="http://<?php echo APP_HOST; ?>/login/login" method="post" id="form_login">
+			                    <form action="http://<?php echo APP_HOST; ?>/login/login" method="post" id="form_login" >
 			                    	<div class="form-group sm3">
                                         <label class="sr-only" for="form-username">Usuário</label>
                                         <!--Validacao foi feita com email, -->
-			                        	<input type="email" id="nome" name="email" placeholder="Email..." value= "<?php Sessao::retornaValorFormulario('email') ?>" class="form-username form-control" id="form-username">
+			                        	<input type="email"  name="email" placeholder="Email..." value= "<?php Sessao::retornaValorFormulario('email') ?>" class="form-username form-control" id="email"value="<?php if(isset($_COOKIE['email'])){ echo $_COOKIE['senha']; }; ?>">
 			                        </div>
 			                        <div class="form-group">
 			                        	<label class="sr-only" for="form-password">Senha</label>
-			                        	<input type="password" id="senha" name="senha" placeholder="Senha..." class="form-password form-control" id="form-password">
+			                        	<input type="password" id="senha" name="senha" placeholder="Senha..." class="form-password form-control" id="form-password"value="<?php if(isset($_COOKIE['senha'])){ echo $_COOKIE['senha']; }; ?>">
                                     </div>
                                     <div class="form-group">
                                         <a href="<?php echo APP_HOST?>/App/Views/Alterarsenha/esquecisenha.php">"Esqueci minha senha</a>
                                     </div>
                                     <div class="form-check">
-                                         <input type="checkbox" class="form-check-input" id="box01">
-                                        <label class="form-check-label" for="exampleCheck1">Lembrar senha</label>
+                                    <input name="lembrar" type="checkbox" value="lembrar" <?php if(isset($_COOKIE['senha'])){ echo 'checked="checked"'; }; ?>/> Lembrar senha
+                                        <label class="form-check-label">
                                      </div>
                                     
-                                    <button type="submit" class="btn">ENTRAR</button>
+                                    <button type="submit" nome="act" value="logar" class="btn">ENTRAR</button>
                                 
                                     <div class="col-6" style="padding-left: 195px">
                                         <input class="btn btn-light" name="Criar conta" type="button" onClick="window.open('<?php echo APP_HOST;?>/cadastro/index')" value="Criar conta">

@@ -19,22 +19,39 @@ class LoginController extends Controller
 
         Sessao::gravaFormulario($_POST);
         $Usuario->login($Usuario);
-        
-
        
-       // setcookie('email', $_POST['email'])
-        //setcookie('senha', $_post['senha'])
+        if(isset($_POST['act']) && $_POST['act'] == "logar"){
+    
+            $senha  = $_POST['senha'];
+            $lembrar  = $_POST['lembrar'];
+            $email   = $_POST['email'];
+            $tempo = time() + 3600;
+            
+            if(isset($_COOKIE['senha'])){
+            
+                if(!isset($lembrar)){
+                    unset($_COOKIE['senha']);
+                    unset($_COOKIE['email']);
+                }
+            
+            }else{
+            
+                if(isset($lem_senha)){
+                    setcookie("senha", $senha, $tempo);
+                    setcookie("email", $email, $tempo);
+
+                }
+            
+            }
         
-
-
-
+        }
         
-
+       
 
         if($Usuario->login($Usuario)){
             $this->redirect('/home/index');
         }else{
-            Sessao::gravaMensagem("Erro ao gravar");
+            Sessao::gravaMensagem("Não á um usuário logado");
             $this->render('login/Login');
         }
 
